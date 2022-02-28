@@ -8,10 +8,10 @@ class VendingMachine
     add_drinks("コーラ", 120, 5)
   end
 
-  # 在庫がある、かつ、スイカで買える時のみ
+  # 在庫がある、かつ、買える時のみ
   def purchase_drinks(target_drink_name, suica)
-    return unless drink = find(target_drink_name)
-    return if suica.balance < drink.price
+    puts('品切れです。') || return unless drink = find(target_drink_name)
+    puts('お金が足りません。') || return if suica.balance < drink.price
     suica.pay(drink.price)
     @purchase_history << { age: suica.age, sex: suica.sex, drink: drink }
     @balance += drink.price

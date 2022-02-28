@@ -8,7 +8,7 @@ class Suica
   end
 
   def display_balance
-    puts "残高：#{@balance}"
+    puts "スイカの残高：#{@balance}, 性: #{@sex}, 年齢: #{@age}"
     puts
   end
 
