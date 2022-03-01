@@ -1,29 +1,31 @@
-require './vending_machine.rb'
+require './transaction.rb'
 require './suica.rb'
+require './drink_stock.rb'
 
 # 自販機の作成と飲み物仕入れ
-vending_machine = VendingMachine.new
-vending_machine.add_drinks("レッドブル", 200, 5)
-vending_machine.add_drinks("水", 100, 5)
+transaction = Transaction.new
+drink_stock = DrinkStock.new
+drink_stock.add_drinks("レッドブル", 200, 5)
+drink_stock.add_drinks("水", 100, 5)
 
 # 買えるもの、自販機の売り上げ金を表示
-vending_machine.display_buyable_drinks
-vending_machine.display_balance
+drink_stock.display_buyable_drinks
+transaction.display_balance
 
 # スイカの作成、レッドブルを買う
 suica_male = Suica.new(1000, 21 ,'男')
 suica_female = Suica.new(1000, 18 ,'女')
 
-15.times.each do
-  vending_machine.purchase_drinks("レッドブル", suica_female)
-  vending_machine.purchase_drinks("コーラ", suica_male)
+8.times.each do
+  transaction.purchase_drinks("レッドブル", suica_female)
+  transaction.purchase_drinks("コーラ", suica_male)
 end
 
 # 買えるもの、自販機の売り上げ金を表示
-vending_machine.display_buyable_drinks
-vending_machine.display_balance
+drink_stock.display_buyable_drinks
+transaction.display_balance
 
 # スイカの残高と自販機の購買履歴
 suica_male.display_balance
 suica_female.display_balance
-vending_machine.display_purchase_history
+transaction.display_purchase_history
